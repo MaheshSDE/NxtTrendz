@@ -4,6 +4,7 @@ pipeline {
         DOCKER_ID  = 'pmahesh59'
         BACKEND    = "${DOCKER_ID}/nxttrendz-backend"
         FRONTEND   = "${DOCKER_ID}/nxttrendz-frontend"
+        EC2_HOST   =  "3.105.252.171"
     }
 
     stages {
@@ -12,7 +13,7 @@ pipeline {
             sh 'docker build -t $BACKEND:$BUILD_NUMBER ./backend'
             sh 'docker build -t $FRONTEND:$BUILD_NUMBER ./frontend'
         } }
-        
+
         stage('Push') { steps {
             withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials',
                 usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
@@ -21,5 +22,20 @@ pipeline {
                 sh 'docker push $FRONTEND:$BUILD_NUMBER'
             }
         } }
+        // Jenkinsfile, after the Push stage
+        stage('Deploy') {
+            steps {
+                sshagent(['ec2-ssh-key']) {
+                    sh '''
+                        ssh -o StrictHostKeyChecking=no ubuntu@$EC2_HOST "
+                            cd ~/nxttrendz &&
+                            sed -i 's/^IMAGE_TAG=.*/IMAGE_TAG=$BUILD_NUMBER/' .env &&
+                            docker compose pull &&
+                            docker compose up -d
+                        "
+                    '''
+                }
+            }
+        }
     }
 }
