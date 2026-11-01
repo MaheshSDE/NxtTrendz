@@ -26,7 +26,7 @@ pipeline {
                 sshagent(['ec2-ssh-key']) {
                     sh '''
                         ssh -o StrictHostKeyChecking=no ubuntu@$EC2_HOST "
-                            cd ~ &&
+                            cd ~/nxttrendz &&
                             sed -i 's/^IMAGE_TAG=.*/IMAGE_TAG=$BUILD_NUMBER/' .env &&
                             docker compose pull &&
                             docker compose up -d
