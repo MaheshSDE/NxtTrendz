@@ -6,14 +6,12 @@ pipeline {
         FRONTEND   = "${DOCKER_ID}/nxttrendz-frontend"
         EC2_HOST   =  "3.105.252.171"
     }
-
     stages {
         stage('Checkout') { steps { git branch: 'master', url: 'https://github.com/MaheshSDE/NxtTrendz' } }
         stage('Build') { steps {
             sh 'docker build -t $BACKEND:$BUILD_NUMBER ./backend'
             sh 'docker build -t $FRONTEND:$BUILD_NUMBER ./frontend'
         } }
-
         stage('Push') { steps {
             withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials',
                 usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
