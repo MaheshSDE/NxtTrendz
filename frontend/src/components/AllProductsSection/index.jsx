@@ -219,7 +219,7 @@ const AllProductsSection = () => {
 
     return shouldShowProductsList ? (
       <div className="all-products-container">
-      <h1>Hi All Products</h1>
+      <h1>Hi Products</h1>
         <ProductsHeader
           activeOptionId={activeOptionId}
           sortbyOptions={sortbyOptions}
