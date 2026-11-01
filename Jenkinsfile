@@ -4,7 +4,7 @@ pipeline {
         DOCKER_ID  = 'pmahesh59'
         BACKEND    = "${DOCKER_ID}/nxttrendz-backend"
         FRONTEND   = "${DOCKER_ID}/nxttrendz-frontend"
-        EC2_HOST   =  "3.105.252.171"
+        EC2_HOST   =  "172.31.34.88"
     }
 
     stages {
