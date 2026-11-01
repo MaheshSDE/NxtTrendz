@@ -249,6 +249,7 @@ const AllProductsSection = () => {
       </div>
     )
   }
+  
 
   return (
     <div className="all-products-section">
