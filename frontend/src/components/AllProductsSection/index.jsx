@@ -219,7 +219,6 @@ const AllProductsSection = () => {
 
     return shouldShowProductsList ? (
       <div className="all-products-container">
-        <h1>HWelcome Mahesh to products section</h1>
         <ProductsHeader
           activeOptionId={activeOptionId}
           sortbyOptions={sortbyOptions}
@@ -250,7 +249,6 @@ const AllProductsSection = () => {
 
   return (
     <div className="all-products-section">
-      <h1>Deploy test 3</h1>
       <FiltersGroup
         searchInput={searchInput}
         categoryOptions={categoryOptions}
