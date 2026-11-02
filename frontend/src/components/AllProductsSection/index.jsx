@@ -219,8 +219,7 @@ const AllProductsSection = () => {
 
     return shouldShowProductsList ? (
       <div className="all-products-container">
-        <h1>Hi Products</h1>
-        <h1>Deploy test 2</h1>
+        <h1>HWelcome Mahesh to products section</h1>
         <ProductsHeader
           activeOptionId={activeOptionId}
           sortbyOptions={sortbyOptions}
@@ -240,8 +239,6 @@ const AllProductsSection = () => {
           className="no-products-img"
           alt="no products"
         />
-        <h1>Hi Products</h1>
-        <h1>Deploy test 2</h1>
         <h1 className="no-products-heading">No Products Found</h1>
         <p className="no-products-description">
           We could not find any products. Try other filters.
@@ -253,8 +250,6 @@ const AllProductsSection = () => {
 
   return (
     <div className="all-products-section">
-      <h1>Hi Products</h1>
-      <h1>Deploy test 2</h1>
       <FiltersGroup
         searchInput={searchInput}
         categoryOptions={categoryOptions}
